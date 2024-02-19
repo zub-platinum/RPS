@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('Hhh')
+
+        const whatBeatsWhat = {rock: 'scissors', paper: 'rock', scissors: 'paper'}
+        const compChoices = Object.keys(whatBeatsWhat);
+
+        function getComputerChoice(){
+            let randChoice = Math.floor(Math.random() * compChoices.length);
+            return compChoices[randChoice];
+            
+        }
+
+        function playRound (playerSelection, computerSelection){
+                if (playerSelection.toLowerCase() === computerSelection){
+                    return ('The game is a tie');
+                }
+
+                else if (whatBeatsWhat[playerSelection.toLowerCase()] === computerSelection){
+                    return ('You Win! ' + playerSelection + ' beats ' + computerSelection);
+                }
+                else {
+                    return ('You Lose! ' + computerSelection + ' beats ' + playerSelection)
+                }
+        }
+
+        function playGame(){
+            playerScore = 0;
+            computerScore = 0;
+
+            for (let i = 0; i < 5; i++){
+                    playerSelection = prompt('What is your choice?')
+                    computerSelection = getComputerChoice();
+                    result = playRound(playerSelection, computerSelection)
+
+                    if (result.includes('Win')){
+                        playerScore++;
+                    }
+                    else if (result.includes('Lose')){
+                        computerScore++;
+                    }
+                    console.log(result);
+                    console.log('Player Score: ' + playerScore);
+                    console.log('Computer Score: ' + computerScore);
+
+            }
+        }
+
+        // const playerSelection = 'ROCK';
+        // const computerSelection = getComputerChoice();
+        // const resultss = playRound(playerSelection, computerSelection);
+        // console.log(resultss, playerSelection, computerSelection);
+    </script>
+</body>
+</html>
